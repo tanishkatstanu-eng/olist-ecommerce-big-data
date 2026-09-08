@@ -6,7 +6,7 @@ USE olist_db;
 -- 1. Transactional JOIN demonstration
 SELECT o.order_id, o.order_status, o.order_purchase_timestamp, oi.product_id, oi.price, oi.freight_value, p.product_category_name,
  r.review_score FROM orders o JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id
-LEFT JOIN order_reviews_clean r ON o.order_id = r.order_id LIMIT 20;
+LEFT JOIN order_reviews_clean r ON o.order_id = r.order_id;
 
 -- 2. Delivery performance vs customer satisfaction
 SELECT CASE WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 'Late' ELSE 'On Time' END AS delivery_status,
